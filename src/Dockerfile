@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2019 AS build
+FROM mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2022 AS build
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
@@ -13,7 +13,7 @@ COPY JabbR ./JabbR
 WORKDIR /app/JabbR
 RUN msbuild /p:Configuration=Release
 
-FROM mcr.microsoft.com/dotnet/framework/aspnet:4.8-windowsservercore-ltsc2019 AS runtime
+FROM mcr.microsoft.com/dotnet/framework/aspnet:4.8-windowsservercore-ltsc2022 AS runtime
 SHELL ["C:\\LogMonitor\\LogMonitor.exe", "powershell.exe"]
 
 WORKDIR /LogMonitor
