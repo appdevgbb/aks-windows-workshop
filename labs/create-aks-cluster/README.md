@@ -29,19 +29,19 @@ In this lab we will create our Azure Kubernetes Services (AKS) distributed compu
    az aks get-versions -l $LOCATION --output table
 
    KubernetesVersion    Upgrades
-   -------------------  ----------------------
-   1.23.5               None available
-   1.23.3               1.23.5
-   1.22.6               1.23.3, 1.23.5
-   1.22.4               1.22.6, 1.23.3, 1.23.5
-   1.21.9               1.22.4, 1.22.6
-   1.21.7               1.21.9, 1.22.4, 1.22.6
+   -------------------  -----------------------
+   1.26.3               None available
+   1.26.0               1.26.3
+   1.25.6               1.26.0, 1.26.3
+   1.25.5               1.25.6, 1.26.0, 1.26.3
+   1.24.10              1.25.5, 1.25.6
+   1.24.9               1.24.10, 1.25.5, 1.25.6
    ```
 
-   For this lab we'll use 1.23.5
+   For this lab we'll use 1.26.0.
 
    ```bash
-   K8SVERSION=1.23.5
+   K8SVERSION=1.26.0
    ```
 
    > The below command can take 3-5 minutes to run as it is creating the AKS cluster.
@@ -58,7 +58,8 @@ In this lab we will create our Azure Kubernetes Services (AKS) distributed compu
    --generate-ssh-keys -l $LOCATION \
    --node-count 1 \
    --network-plugin azure \
-   --no-wait
+   --network-plugin-mode overlay \
+   --attach-acr $ACRNAME
    ```
 
 1. Verify your cluster status. The `ProvisioningState` should be `Succeeded`
@@ -68,9 +69,9 @@ In this lab we will create our Azure Kubernetes Services (AKS) distributed compu
     ```
 
     ```bash
-    Name          Location    ResourceGroup     KubernetesVersion    ProvisioningState    Fqdn
-    ------------  ----------  ----------------  -------------------  -------------------  ----------------------------------------------------------------
-    akssteve6217  eastus      aks-rg-steve6217  1.23.5               Succeeded             akssteve62-aks-rg-steve6217-62afe9-10a899bd.hcp.eastus.azmk8s.io
+      Name           Location    ResourceGroup       KubernetesVersion    CurrentKubernetesVersion    ProvisioningState    Fqdn
+      -------------  ----------  ------------------  -------------------  --------------------------  -------------------  ----------------------------------------------------------------
+      akssteve29100  eastus      aks-rg-steve29100   1.26.0               1.26.0                      Succeeded            akssteve29-aks-rg-steve2910-286322-0daesa84.hcp.eastus.azmk8s.io
     ```
 
 1. Add your Windows node pool
@@ -100,9 +101,9 @@ In this lab we will create our Azure Kubernetes Services (AKS) distributed compu
     ```
 
     ```bash
-    NAME                                STATUS   ROLES   AGE   VERSION
-    aks-nodepool1-59854761-vmss000000   Ready    agent   57m   v1.17.7
-    aksnpwin000000                      Ready    agent   49m   v1.17.7
+    NAME                                STATUS   ROLES   AGE     VERSION
+    aks-nodepool1-26095497-vmss000000   Ready    agent   8m34s   v1.26.0
+    aksnpwin000000                      Ready    agent   38s     v1.26.0
     ```
 
     To see more details about your cluster:
@@ -112,9 +113,9 @@ In this lab we will create our Azure Kubernetes Services (AKS) distributed compu
     ```
 
     ```bash
-   Kubernetes control plane is running at https://akssteve62-aks-rg-steve6217-62afe9-10a899bd.hcp.eastus.azmk8s.io:443
-   CoreDNS is running at https://akssteve62-aks-rg-steve6217-62afe9-10a899bd.hcp.eastus.azmk8s.io:443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-   Metrics-server is running at https://akssteve62-aks-rg-steve6217-62afe9-10a899bd.hcp.eastus.azmk8s.io:443/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
+   Kubernetes control plane is running at https://akssteve29-aks-rg-steve2910-286322-0daesa84.hcp.eastus.azmk8s.io:443
+   CoreDNS is running at https://akssteve29-aks-rg-steve2910-286322-0daesa84.hcp.eastus.azmk8s.io:443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+   Metrics-server is running at https://akssteve29-aks-rg-steve2910-286322-0daesa84.hcp.eastus.azmk8s.io:443/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
 
    To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
@@ -128,7 +129,7 @@ This lab creates namespaces that reflect a representative example of an organiza
 1. Navigate to the directory of the cloned repository
 
    ```bash
-   cd kubernetes-hackfest
+   cd ~/aks-windows-workshop/
    ```
 
 2. Create three namespaces
