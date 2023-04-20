@@ -1,0 +1,143 @@
+{
+    "type": "object",
+    "properties": {
+        "receiver": {
+            "type": "string"
+        },
+        "status": {
+            "type": "string"
+        },
+        "alerts": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "properties": {
+                            "alertname": {
+                                "type": "string"
+                            },
+                            "container": {
+                                "type": "string"
+                            },
+                            "deployment": {
+                                "type": "string"
+                            },
+                            "instance": {
+                                "type": "string"
+                            },
+                            "job": {
+                                "type": "string"
+                            },
+                            "namespace": {
+                                "type": "string"
+                            },
+                            "prometheus": {
+                                "type": "string"
+                            },
+                            "severity": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "annotations": {
+                        "type": "object",
+                        "properties": {
+                            "description": {
+                                "type": "string"
+                            },
+                            "summary": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "startsAt": {
+                        "type": "string"
+                    },
+                    "endsAt": {
+                        "type": "string"
+                    },
+                    "generatorURL": {
+                        "type": "string"
+                    },
+                    "fingerprint": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "status",
+                    "labels",
+                    "annotations",
+                    "startsAt",
+                    "endsAt",
+                    "generatorURL",
+                    "fingerprint"
+                ]
+            }
+        },
+        "groupLabels": {
+            "type": "object",
+            "properties": {
+                "namespace": {
+                    "type": "string"
+                }
+            }
+        },
+        "commonLabels": {
+            "type": "object",
+            "properties": {
+                "alertname": {
+                    "type": "string"
+                },
+                "container": {
+                    "type": "string"
+                },
+                "deployment": {
+                    "type": "string"
+                },
+                "instance": {
+                    "type": "string"
+                },
+                "job": {
+                    "type": "string"
+                },
+                "namespace": {
+                    "type": "string"
+                },
+                "prometheus": {
+                    "type": "string"
+                },
+                "severity": {
+                    "type": "string"
+                }
+            }
+        },
+        "commonAnnotations": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "summary": {
+                    "type": "string"
+                }
+            }
+        },
+        "externalURL": {
+            "type": "string"
+        },
+        "version": {
+            "type": "string"
+        },
+        "groupKey": {
+            "type": "string"
+        },
+        "truncatedAlerts": {
+            "type": "integer"
+        }
+    }
+}
