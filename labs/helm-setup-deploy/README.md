@@ -17,17 +17,8 @@ In this lab we will use helm to deploy our Jabbr application.
 helm version
 
 # Example Output:
-version.BuildInfo{Version:"v3.8.0", GitCommit:"d14138609b01886f544b2025f5000351c9eb092e", GitTreeState:"clean", GoVersion:"go1.17.5"}
+version.BuildInfo{Version:"v3.10.3", GitCommit:"", GitTreeState:"clean", GoVersion:"go1.18.8"}
 ```
-
-1. Create a registry credential secret in your Kubernetes cluster to be used by AKS when pulling your image:
-
-    ```bash
-    kubectl create -n jabbr secret docker-registry regcred \
-    --docker-server=$ACRUSERNAME.azurecr.io \
-    --docker-username=$ACRUSERNAME \
-    --docker-password=$ACRPASSWD
-    ```
 
 1. Create Kubernetes secrets for access to the Jabbr database in your Azure SQL DB
 
@@ -46,11 +37,11 @@ version.BuildInfo{Version:"v3.8.0", GitCommit:"d14138609b01886f544b2025f5000351c
     kubectl create secret generic sql-db-conn-secret --from-literal="connstr=$CONNSTR" -n jabbr
     ```
 
-1. Review the Helm Chart components
+2. Review the Helm Chart components
 
     ```bash
     # Go to the Jabbr Application Directory
-    cd ~/JabbR
+    cd ~/aks-windows-workshop/src
     ```
 
     In the folder for this lab there's a folder called `chart` with a sub-folder for the Kubernetes manifests to be deployed.
@@ -59,7 +50,7 @@ version.BuildInfo{Version:"v3.8.0", GitCommit:"d14138609b01886f544b2025f5000351c
 
     The `templates` folder holds the yaml files for the specific kubernetes resources for our application. Here you will see how Helm inserts the parameters into resources with this bracketed notation: eg -  `{{.Values.deploy.image}}`
 
-1. Customize Chart Parameters
+3. Customize Chart Parameters
 
     In each chart we will need to update the values file with our specific Azure Container Registry. 
 
@@ -88,12 +79,12 @@ version.BuildInfo{Version:"v3.8.0", GitCommit:"d14138609b01886f544b2025f5000351c
 
         deploy:
         name: jabbr
-        acr: acrhackfeststeve7535.azurecr.io
+        acr: steve29100.azurecr.io
         imageTag: "1.0"
         containerPort: 80
         ```
 
-1. Deploy Chart
+4. Deploy Chart
 
     Ensure namespace was created earlier:
     ```bash
@@ -112,7 +103,7 @@ version.BuildInfo{Version:"v3.8.0", GitCommit:"d14138609b01886f544b2025f5000351c
     ```
     **NOTE: This app has a large image size, so it will take up to 10min for the first start due to the large initial image pull size. Later pulls will be faster as the base layers are already present.**
 
-1. Initialize application
+5. Initialize application
 
     * First check to see if pods and services are working correctly
 
@@ -135,7 +126,7 @@ version.BuildInfo{Version:"v3.8.0", GitCommit:"d14138609b01886f544b2025f5000351c
     jabbr   LoadBalancer   10.0.130.57   52.191.98.101   80:31043/TCP   4m4s
     ```
 
-    Open the browser to http://52.191.98.101 (your IP will be different #obvious). Initial load time may take a minute or two as the application warms up.
+    Open the browser to http://52.191.98.101 (your IP will be different, obviously). Initial load time may take a minute or two as the application warms up.
 
     Once the page loads you can click 'Register' to create a new JabbR user and sign in.
 
