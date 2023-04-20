@@ -23,9 +23,9 @@ The following are the basic requirements to **start** the labs. Individual labs 
 
 
 #### Coming soon:
-* Service Bus for Front End Scale Out
 * In-cluster SQL DB
 * Group Managed Service Account
+* Workload Identity
 
 
 # Contributing
