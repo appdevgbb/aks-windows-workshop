@@ -18,7 +18,7 @@ In this lab we will build Docker containers for the JabbR ASP.Net application an
 1. Once your cloud shell is started, clone the workshop repo into the cloud shell environment
 
    ```bash
-   git clone https://github.com/Azure/kubernetes-hackfest.git -b windows-lab
+   git clone https://github.com/appdevgbb/aks-windows-workshop
    ```
    > Note: In the cloud shell, you are automatically logged into your Azure subscription.
 
@@ -31,7 +31,7 @@ In this lab we will build Docker containers for the JabbR ASP.Net application an
 
    ```
    # Verify selected subscription
-   az account show
+   az account show -o yaml
    ```
 
    ```
@@ -84,28 +84,13 @@ source ~/workshopvars.env
     # Use the UNIQUE_SUFFIX from the first lab. Validate that the value is still set.
     echo $UNIQUE_SUFFIX
     # Set Azure Container Registry Name
-    export ACRNAME=acrhackfest$UNIQUE_SUFFIX
+    export ACRNAME=$UNIQUE_SUFFIX
     # Check ACR Name (Can Only Container lowercase)
     echo $ACRNAME
     # Persist for Later Sessions in Case of Timeout
-    echo export ACRNAME=acrhackfest$UNIQUE_SUFFIX >> ~/workshopvars.env
+    echo export ACRNAME=$UNIQUE_SUFFIX >> ~/workshopvars.env
     # Create Azure Container Registry
-    az acr create --resource-group $RGNAME --name $ACRNAME --sku Basic --admin-enabled
-    ```
-
-1. Create a registry credential to be used by the cluster to access your ACR
-
-    **NOTE: We're using admin credentials for this lab. In real world scenarios you may choose to use a service principal and disable admin credentials on the ACR.**
-
-    ```bash
-    # Get the Admin user name
-    export ACRUSERNAME=$(az acr credential show -g $RGNAME -n $ACRNAME -o tsv --query username)
-    # Persist for Later Sessions in Case of Timeout
-    echo export ACRUSERNAME=$ACRUSERNAME >> ~/workshopvars.env
-    # Get the password
-    export ACRPASSWD=$(az acr credential show -g $RGNAME -n $ACRNAME -o tsv --query passwords[0].value)
-    # Persist for Later Sessions in Case of Timeout
-    echo export ACRPASSWD=\'$ACRPASSWD\' >> ~/workshopvars.env
+    az acr create --resource-group $RGNAME --name $ACRNAME --sku Basic 
     ```
 
 1. Deploy Azure SQL DB
@@ -114,7 +99,7 @@ source ~/workshopvars.env
 
     ```bash
     export SQLSERVERNAME=sql$UNIQUE_SUFFIX
-    # Check COSMOS Name
+    # Check SQL Server Name
     echo $SQLSERVERNAME
     # Persist for Later Sessions in Case of Timeout
     echo export SQLSERVERNAME=sql$UNIQUE_SUFFIX >> ~/workshopvars.env
@@ -138,8 +123,8 @@ source ~/workshopvars.env
     >**NOTE:** The directory name 'JabbR' referenced below is case sensitive, so make sure you clone with the proper case before trying to run ACR build.
 
     ```bash
-    git clone https://github.com/swgriffith/JabbR
-    az acr build -t jabbr:1.0 -r $ACRNAME --no-logs -o json JabbR --platform Windows --verbose
+    cd ./aks-windows-workshop/src
+    az acr build --image jabbr:1.0 --registry $ACRNAME --platform Windows --verbose .
     ```
 
     You can see the status of the builds by running the command below.
