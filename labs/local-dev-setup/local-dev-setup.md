@@ -83,8 +83,6 @@ In this lab we will clone the source code, create the data store and then build 
     echo export UNIQUE_SUFFIX=$UNIQUE_SUFFIX >> ~/workshopvars.env
     ```
 
-   **Note this value as it will be used in the next couple labs.**
-
 1. Create an Azure Resource Group in East US.
 
    ```bash
