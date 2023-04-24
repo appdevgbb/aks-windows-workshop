@@ -31,11 +31,11 @@ In this lab content, you will work through the standard workflow for containeriz
 
 
 ### Jabbr Lab List:
-1. Local Developer Setup
-2. .Net Portability Analysis
-3. [Build Application Components and Prerequisites](labs/build-application/README.md)
-4. [Create AKS Cluster](labs/create-aks-cluster/README.md)
-5. [Helm Setup and Deploy Application](labs/helm-setup-deploy/README.md)
+1. [Local Developer Setup](labs/local-dev-setup/local-dev-setup.md)
+2. [.Net Portability Analysis](labs/portability-analysis/portability-analysis.md)
+3. [Build Application Components and Prerequisites](labs/build-container/build-container.md)
+4. [Create AKS Cluster](labs/create-aks-cluster/create-aks-cluster.md)
+5. [Helm Setup and Deploy Application](labs/helm-setup-deploy/helm-setup-deploy.md)
 
 ### Additional exercises (in no order):
 * [Monitoring Windows Nodes](labs/monitoring/monitoring.md)
