@@ -223,4 +223,4 @@ This lab creates namespaces that reflect a representative example of an organiza
 - [Use Ansible to deploy AKS](https://docs.microsoft.com/en-us/azure/ansible/ansible-create-configure-aks?toc=%2Fen-us%2Fazure%2Faks%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
 - [Use Terraform to deploy AKS](https://docs.microsoft.com/en-us/azure/terraform/terraform-create-k8s-cluster-with-tf-and-aks?toc=%2Fen-us%2Fazure%2Faks%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
 
-#### Next Lab: [Helm Deploy Application](../helm-setup-deploy/README.md)
+#### Next Lab: [Helm Deploy Application](../helm-setup-deploy/helm-setup-deploy.md)

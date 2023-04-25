@@ -56,4 +56,4 @@ In this lab we will build Docker containers for the JabbR ASP.Net application an
 
 * Azure Container Registry Docs. https://docs.microsoft.com/en-us/azure/container-registry 
 
-#### Next Lab: [Create AKS Cluster](../create-aks-cluster/README.md)
+#### Next Lab: [Create AKS Cluster](../create-aks-cluster/create-aks-cluster.md)
