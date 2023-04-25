@@ -168,4 +168,4 @@ In this lab we will clone the source code, create the data store and then build 
 
 You should now have a working dev environment for Jabbr where you can play around and make code changes!
 
-#### Next Lab: [.Net Portability Analysis](labs/portability-analysis/portability-analysis.md)
+#### Next Lab: [.Net Portability Analysis](../portability-analysis/portability-analysis.md)
