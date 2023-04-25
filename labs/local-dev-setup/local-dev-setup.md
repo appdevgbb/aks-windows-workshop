@@ -32,7 +32,7 @@ In this lab we will clone the source code, create the data store and then build 
 
 1. Open the Azure Cloud Shell and choose Bash Shell (do not choose Powershell)
 
-   ![Azure Cloud Shell](../../assets/img/img-cloud-shell.png "Azure Cloud Shell")
+   ![Azure Cloud Shell](../../assets/img/local-dev-setup/img-cloud-shell.png "Azure Cloud Shell")
 
 1. The first time Cloud Shell is started will require you to create a storage account.
 
