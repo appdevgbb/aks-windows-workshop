@@ -1,14 +1,3 @@
-Pre-Reqs
-VS2019
-Excel (Optional)
-
-INSTALL EXTENSION
-RESTART VS
-REOPEN SOLUTION
-CONFIGURE ANALYZER
-Run analyzer
-Review Results
-
 # Lab: .Net Portability Analysis
 
 Before looking to containerize a .Net Framework application, it's a good idea to consider what options you have at your disposal. Modernizing an application doesn't mean it MUST go to containers. Often times a lot of benefit can be gained on supportability and features by upgrading the runtime version, or transitioning to another runtime. For example, there are a lot of benefits of moving to [dotnet core](https://dotnet.microsoft.com/en-us/download), including the fact that it's free and open source, and is portable across platforms (i.e. Mac, Windows and Linux).
