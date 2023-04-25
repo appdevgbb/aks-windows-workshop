@@ -76,11 +76,11 @@ This is extremely helpful, because it means we can create an HTTP Reciever that 
 
 1. Go to the Azure Portal and click the '+' icon in the top right, search for 'Logic App' and click 'Create'
 
-    ![logic-app-create-1](../../assets/img/logic-app-create-1.jpg)
+    ![logic-app-create-1](../../assets/img/monitoring/logic-app-create-1.jpg)
 
 1. Choose a resource group, region and specify the name and plan type and then create:
 
-    ![logic-app-create-2](../../assets/img/logic-app-create-2.jpg)
+    ![logic-app-create-2](../../assets/img/monitoring/logic-app-create-2.jpg)
 
 1. When the deployment completes, click on 'Go to resource'
 
@@ -88,11 +88,11 @@ This is extremely helpful, because it means we can create an HTTP Reciever that 
 
 1. We're going to trigger this logic app with an HTTP Post, so we'll use the 'When HTTP request is recieved' trigger. 
 
-    ![http-trigger](../../assets/img/http-trigger.jpg)
+    ![http-trigger](../../assets/img/monitoring/http-trigger.jpg)
 
 1. For the 'body schema' field, we already have a sample body from the Alert Manager documentation (above), so we can use the 'use sample payload to generate schema' option.
 
-    ![sample-payload-1](../../assets/img/http-trigger-sample-payload-1.jpg)
+    ![sample-payload-1](../../assets/img/monitoring/http-trigger-sample-payload-1.jpg)
 
 1. Click 'use sample payload to generate schema' and paste in the following and then click 'Done'. This is just the example from the alert manager documentation with a few fixes to make sure the input data is valid.
 
@@ -120,19 +120,19 @@ This is extremely helpful, because it means we can create an HTTP Reciever that 
     ]
     }
     ```
-    ![sample-payload-2](../../assets/img/http-trigger-sample-payload-2.jpg)
+    ![sample-payload-2](../../assets/img/monitoring/http-trigger-sample-payload-2.jpg)
 
 1. Click 'Done'
 
-    ![sample-payload-3](../../assets/img/http-trigger-sample-payload-3.jpg)
+    ![sample-payload-3](../../assets/img/monitoring/http-trigger-sample-payload-3.jpg)
 
 1. There could be multiple alerts, so we'll iterate through the alerts and execute one action per alert. Click on 'New Step' and search for 'For each'. It's under 'Control' so select 'Control' and then 'For Each'
    
-   ![for-each-1](../../assets/img/for-each-1.jpg)
+   ![for-each-1](../../assets/img/monitoring/for-each-1.jpg)
 
 1. Click in the 'Select output from previous steps' dialog and then in the 'Dynamic Content' window select 'alerts'.
 
-    ![for-each-2](../../assets/img/for-each-2.jpg)
+    ![for-each-2](../../assets/img/monitoring/for-each-2.jpg)
 
 1. We need to parse the contents of each item. We know it's JSON content, so we can use the JSON Parse action. Inside the 'For Each' loop box click on 'add an action' and then search for 'Parse', select 'Data Operations' and then 'Parse Json'
 
@@ -203,29 +203,29 @@ This is extremely helpful, because it means we can create an HTTP Reciever that 
     }
     ```
 
-    ![parse-json](../../assets/img/parse-json.jpg)
+    ![parse-json](../../assets/img/monitoring/parse-json.jpg)
 
 1. Finally, lets add our teams message action. Click on 'Add an action' and search for 'Microsoft Teams'. 
 
-    ![teams-1](../../assets/img/teams-1.jpg)
+    ![teams-1](../../assets/img/monitoring/teams-1.jpg)
 
 1. Select 'Microsoft Teams' and then 'Post message in chat or channel'
 
-    ![teams-2](../../assets/img/teams-2.jpg)
+    ![teams-2](../../assets/img/monitoring/teams-2.jpg)
 
 1. The first time you use this you'll need to walk through your teams sign in process, to create the auth token to be used by the logic app. Complete the process.
 
 1. Choose the options for the target chat or channel. I'm posting to a channel called 'Windows Cluster Alerts' in my 'Griffith' team, as shown below.
 
-    ![teams-3](../../assets/img/teams-3.jpg)
+    ![teams-3](../../assets/img/monitoring/teams-3.jpg)
 
 1. Next we format the message we want to post. I'm going to show the Status, Alert Name, Severity and Description fields, so I've added them as shown below. Note that when you go to select 'Dynamic Content' from the 'Parse JSON' action, you may need to click 'Show more' to see all the fields.
 
-    ![teams-4](../../assets/img/teams-4.jpg)
+    ![teams-4](../../assets/img/monitoring/teams-4.jpg)
 
 1. Finally, we can click 'Save' at the top of the screen! Now that the Logic App is saved we should be able to get the URL. Click on the 'When an HTTP request is recieved' action and copy the URL.
 
-    ![logic-app-url](../../assets/img/logic-app-url.jpg)
+    ![logic-app-url](../../assets/img/monitoring/logic-app-url.jpg)
 
 ### Update the Alert Manager Config with the WebHook Details
 
@@ -250,7 +250,7 @@ This is extremely helpful, because it means we can create an HTTP Reciever that 
 
 1. Now if we go back and try to trigger our alert and the resolve the alert, we should see the messages arrive in our Teams chat.
 
-    ![teams-alert-view](../../assets/img/teams-alert-view.jpg)
+    ![teams-alert-view](../../assets/img/monitoring/teams-alert-view.jpg)
 
 ## Conclusion
 

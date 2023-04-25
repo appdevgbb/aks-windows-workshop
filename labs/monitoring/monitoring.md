@@ -86,11 +86,11 @@ The first step in getting our Windows node metrics into Prometheus and Grafana i
    
 1. Enter the userid and password (admin:admin) and then follow the prompts to reset the admin password
 
-    ![kube prometheus dashboards](../../assets/img/prom-dashboards.jpg)
+    ![kube prometheus dashboards](../../assets/img/monitoring/prom-dashboards.jpg)
 
 1. Click on the '/Node Exporter/USE Method/Cluster' dashboard, and notice that the data is only sourced from the linux nodes
 
-    ![use method cluster](../../assets/img/use-method-cluster.jpg)
+    ![use method cluster](../../assets/img/monitoring/use-method-cluster.jpg)
 
 ### Install the Windows Node Exporter
 
@@ -123,11 +123,11 @@ The Windows node exporter is a separate Prometheus project, which you can find [
 
 1. Navigate your browser to http://localhost:9090
 
-    ![windows metrics](../../assets/img/windows-metrics.jpg)
+    ![windows metrics](../../assets/img/monitoring/windows-metrics.jpg)
 
 1. Enter 'windows_os_info' into the query text box and hit 'Execute'. You should see data returned for each windows node.
 
-    ![windows metric results](../../assets/img/windows-metric-results.jpg)
+    ![windows metric results](../../assets/img/monitoring/windows-metric-results.jpg)
 
 ### Install a Windows Dashboard
 
@@ -135,11 +135,11 @@ To visualize data in Grafana, we need a dashboard. We can create one from scratc
 
 1. Navigate back to Grafana and click the '+' link on the left of the page and select 'Import' to import a new dashboard. Import from file, using the 'dashboard.json' found at ```kubernetes-hackfest/labs/windows/labs/monitoring/dashboard.json```
 
-    ![import dashboard](../../assets/img/import-dashboard.jpg)
+    ![import dashboard](../../assets/img/monitoring/import-dashboard.jpg)
 
 1. Navigate to the dashboard, if you weren't already taken to it, and check out the new metrics you can view.
 
-    ![windows dashboard](../../assets/img/windows-dashboard.jpg)
+    ![windows dashboard](../../assets/img/monitoring/windows-dashboard.jpg)
 
 ## Conclusion
 

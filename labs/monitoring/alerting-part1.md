@@ -32,7 +32,7 @@ Forwarding from [::1]:9090 -> 9090
 
 Navigate to [http://localhost:9090](http://localhost:9090) and click on the 'Alerts' tab.
 
-![alerts-dashboard](../../assets/img/alerts-dashboard.jpg)
+![alerts-dashboard](../../assets/img/monitoring/alerts-dashboard.jpg)
 
 These alert rules are mantained through a custom resource definition called 'PrometheusRule'. Create a new file called jabbr-rules.yaml and paste the following in the file:
 
@@ -69,7 +69,7 @@ kubectl apply -f jabbr-rules.yaml
 
 Wait for a minute or two for the rule to be loaded and fire and then check the Alerts dashboard again. Notice that the alert is already firing in a 'pending'state and will shortly be in an 'active' state. This is because our rule is checking the number of Jabbr pods we have in our deployment, and right now, unless you've already modified it, you only have 1 jabbr pod. 
 
-![alerts-dashboard-withrule](../../assets/img/alerts-dashboard-withrule.jpg)
+![alerts-dashboard-withrule](../../assets/img/monitoring/alerts-dashboard-withrule.jpg)
 
 Let's resolve the alert. We can do that by scaling our Jabbr deployment up to 2 or more pods.
 
@@ -79,7 +79,7 @@ kubectl scale deploy jabbr --replicas=2 -n jabbr
 
 Within a few minutes you should see the alert go from yellow or red to green, indicating that it has been resolved.
 
-![alerts-dashboard-withrule-clear](../../assets/img/alerts-dashboard-withrule-clear.jpg)
+![alerts-dashboard-withrule-clear](../../assets/img/monitoring/alerts-dashboard-withrule-clear.jpg)
 
 That's it! You now have a working alert rule in Kube Prometheus. Next we'll work on trigginer an external notification based on this alert.
 
