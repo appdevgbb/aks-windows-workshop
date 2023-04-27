@@ -40,12 +40,13 @@ In this lab content, you will work through the standard workflow for containeriz
 ### Additional exercises (in no order):
 * [Monitoring Windows Nodes](labs/monitoring/monitoring.md)
 * [Ingress Control](labs/ingress/README.md)
+* [Azure Workload Identity](labs/workload-identity/workload-identity.md)
 
 
 #### Coming soon:
 * In-cluster SQL DB
 * Group Managed Service Account
-* Azure Workload Identity
+
 * CI/CD
 * Attaching Storage via Azure Container Storage Interface
 
