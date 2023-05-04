@@ -41,7 +41,7 @@ In this lab content, you will work through the standard workflow for containeriz
 * [Monitoring Windows Nodes](labs/monitoring/monitoring.md)
 * [Ingress Control](labs/ingress/README.md)
 * [Azure Workload Identity](labs/workload-identity/workload-identity.md)
-* [Attaching Storage via Azure Container Storage Interface](labs/attach-storage/attache-storage.md)
+* [Attaching Storage via Azure Container Storage Interface](labs/attach-storage/attach-storage.md)
 
 
 #### Coming soon:
